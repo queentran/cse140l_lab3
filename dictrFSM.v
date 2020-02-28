@@ -70,8 +70,7 @@ module dicClockFsm (
                 end 
 	        STOP:
 	        begin
-		    nState = //(det_cr|rst) ? STOP :
-			     (det_S) ? RUN : STOP;
+		    nState = (det_S) ? RUN : STOP;
 	        end
 	        default :
 	            nState = STOP;

@@ -106,15 +106,16 @@ module ledDisplay (
 	
 	//dp.6 add code to select output to LED	
     //     10% of points assigned to lab3
-    wire  [1:0] prev_selLed = {1'b0, dicSelectLEDdisp};
+    //wire  [1:0] prev_selLed = {1'b0, dicSelectLEDdisp};
     wire  [1:0] selLed;
     //countrce #(2) cnt1(selLed, prev_selLed, rst, dicSelectLEDdisp, rst, clk); 
-    countrce #(2) cnt1 (.q(selLed), .d(prev_selLed), .ld(1'b0), 
+    countrce #(2) cnt1 (.q(selLed), .d(1'b0), .ld(1'b0), 
 			.ce(dicSelectLEDdisp), .rst(rst), .clk(clk));
 
-    /*always @ posedge clk
+    /*always @ (posedge clk) begin
 	if (dicSelectLEDdisp)
-	    selLed <= selLed + 1;*/
+	    selLed <= selLed ^ dicSelectLEDdisp;
+    end*/
 
     assign L3_led = 
         (~|(selLed ^ 2'b00)) ? {oneSecPluse, di_Sones} :
