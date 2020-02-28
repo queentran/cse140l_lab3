@@ -109,7 +109,7 @@ module ledDisplay (
     //wire  [1:0] prev_selLed = {1'b0, dicSelectLEDdisp};
     wire  [1:0] selLed;
     //countrce #(2) cnt1(selLed, prev_selLed, rst, dicSelectLEDdisp, rst, clk); 
-    countrce #(2) cnt1 (.q(selLed), .d(1'b0), .ld(1'b0), 
+    countrce #(2) cnt1 (.q(selLed), .d(2'b0), .ld(1'b0), 
 			.ce(dicSelectLEDdisp), .rst(rst), .clk(clk));
 
     /*always @ (posedge clk) begin
